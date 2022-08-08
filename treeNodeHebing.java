@@ -52,9 +52,9 @@ public class 两个有序链表合并成一个 {
 
 
 
-        static class ListNode {
+    static class ListNode {
         int val;
         ListNode next = null;
     }
-zzzz  提
+
 }
