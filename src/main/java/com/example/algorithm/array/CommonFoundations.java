@@ -1,5 +1,7 @@
 package com.example.algorithm.array;
 
+import com.alibaba.fastjson.JSON;
+
 /**
  * java常见基础算法，包括二分、排序...
  */
@@ -32,11 +34,39 @@ public class CommonFoundations {
         return indexDefault;
     }
 
+    /**
+     * 冒泡排序 将一个无序数组排序（升）
+     * @param arr 无序数组
+     * @return 数组
+     */
+    static int[] bubbleSort(int[] arr){
+        for (int i=0;i<arr.length;i++){
+            //每一次循环将数组中最大的一个值通过不断地交换移动到数组的后面
+            for (int j=i;j<arr.length-i-1;j++){
+                //减i这里有无都可，减i更优，因为外层每次循环将最大值放到数组后面，数组的倒数i个数都是已经比较过的
+                if (arr[j]>arr[j+1]){
+                    swap(arr,j,j+1);
+                }
+            }
+        }
+        return arr;
+    }
+
+    private static void swap(int[] arr, int i, int j) {
+        int temp=arr[i];
+        arr[i]=arr[j];
+        arr[j]=temp;
+    }
+
 
     public static void main(String[] args) {
         //二分测试
         int[] arr=new int[]{1,3,5,6,7,9};
         System.out.println("二分：下标值"+dichotomy(arr,6));
+
+        //冒泡
+        int[] arrBubbleSort=new int[]{1,6,2,3,9,8};
+        System.out.println("冒泡"+JSON.toJSONString(bubbleSort(arrBubbleSort)));
     }
 
 }
