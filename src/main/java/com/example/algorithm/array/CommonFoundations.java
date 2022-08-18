@@ -58,6 +58,29 @@ public class CommonFoundations {
         arr[j]=temp;
     }
 
+    /**
+     * 选择排序 对于一个无序数组，每次找出来数组中没有排序的最小值，直到不存在没排序的元素
+     * @param arr 无序数组
+     * @return 数组
+     */
+    static int[] selectionSort(int[] arr){
+
+        for (int i=0;i<arr.length;i++){
+            //最小值下标
+            int minIndex=i;
+            for (int j=i+1;j<arr.length;j++){
+                if (arr[j]<arr[minIndex]){
+                    minIndex=j;
+                }
+            }
+            //这里其实和冒泡排序思路差不多，都是目的将极值找出来放到最前面（冒泡放到后面），选择少了交换次数找到极值后才交换
+            swap(arr,minIndex,i);
+        }
+        return arr;
+    }
+
+
+
 
     public static void main(String[] args) {
         //二分测试
@@ -67,6 +90,10 @@ public class CommonFoundations {
         //冒泡
         int[] arrBubbleSort=new int[]{1,6,2,3,9,8};
         System.out.println("冒泡"+JSON.toJSONString(bubbleSort(arrBubbleSort)));
+
+        //选择
+        System.out.println("选择"+JSON.toJSONString(selectionSort(arrBubbleSort)));
+
     }
 
 }
