@@ -79,6 +79,30 @@ public class CommonFoundations {
         return arr;
     }
 
+    /**
+     * 插入排序 将数组分为有序和无序两部分，每次从无序部分拿出一个元素，放到有序里面该元素需要在有序部分找到自己的位置
+     * @param arr 无序数组
+     * @return 数组
+     */
+    static int[] insertionSort(int[] arr){
+        for (int i = 1; i < arr.length; i++) {
+            int tag=arr[i];
+            //找出值在前面有序数组应该占得位置
+            int index=i;
+            for(int j=0;j<i;j++){
+                if (arr[j]<tag && tag<arr[j+1]){
+                    index=j+1;
+                }
+            }
+            //找到tag要插入的index位置后，原先位置及其后方的元素的位置都得移动一位为它腾位置
+            for (int j=i-1;j>=index;j--){
+                arr[j+1]=arr[j];
+            }
+            arr[index]=tag;
+        }
+        return arr;
+    }
+
 
 
 
@@ -89,10 +113,13 @@ public class CommonFoundations {
 
         //冒泡
         int[] arrBubbleSort=new int[]{1,6,2,3,9,8};
-        System.out.println("冒泡"+JSON.toJSONString(bubbleSort(arrBubbleSort)));
+        //System.out.println("冒泡"+JSON.toJSONString(bubbleSort(arrBubbleSort)));
 
         //选择
-        System.out.println("选择"+JSON.toJSONString(selectionSort(arrBubbleSort)));
+        //System.out.println("选择"+JSON.toJSONString(selectionSort(arrBubbleSort)));
+
+        //插入
+        System.out.println("插入"+JSON.toJSONString(insertionSort(arrBubbleSort)));
 
     }
 
