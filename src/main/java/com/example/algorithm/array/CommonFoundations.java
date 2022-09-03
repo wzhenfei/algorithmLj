@@ -103,6 +103,36 @@ public class CommonFoundations {
         return arr;
     }
 
+    /**
+     * 快速排序 选取一个比较的基础点小于在左侧大于在右侧，定义左右两个指针向基准点移动找到不符合的停下来交换指针处的元素，直到左右指针重合
+     * @param arr 无序数组
+     * @param left 左指针
+     * @param right 右指针
+     * @return 数组
+     */
+    static int[] quicksort(int[] arr,int left,int right){
+        int n=left,x=right;
+        //选取基准点
+        int tag=arr[(n+x)>>2];
+        while (n>=x){
+            while (arr[x]>=tag){
+                x--;
+            }
+            while (arr[n]<tag){
+                n++;
+            }
+            if (n>=x){
+                swap(arr,x--,n++);
+            }
+
+        }
+        //左侧
+        quicksort(arr,left,n);
+        //右侧
+        quicksort(arr,n,right);
+        return arr;
+    }
+
 
 
 
@@ -119,7 +149,10 @@ public class CommonFoundations {
         //System.out.println("选择"+JSON.toJSONString(selectionSort(arrBubbleSort)));
 
         //插入
-        System.out.println("插入"+JSON.toJSONString(insertionSort(arrBubbleSort)));
+        //System.out.println("插入"+JSON.toJSONString(insertionSort(arrBubbleSort)));
+
+        //快速排序
+        System.out.println("快速"+JSON.toJSONString(insertionSort(arrBubbleSort)));
 
     }
 
